@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Prisma by Purrline Rocketworks: game data of the stage 1 tank and the interstage. Each row patches the row of the
+     same Id in PrismaTankAAssets.xml, so this file loads after it. The rows follow CoreFuelTankAGameData.xml (a tank
+     with aligned outer and inner connectors) and CoreFairingAGameData.xml (an interstage with its own decoupler). As
+     in the stock tanks, OuterRadius is twice the true radius, so the tank holds about four times its true volume; the
+     true value is in the comment beside it, and the mesh keeps the true size.
+-->
+<Assets>
+    <Part Id="PrismaTankA_Prefab_Stage1Tank" Modify="Patch" DisplayName="Prisma Stage 1 Tank">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Fuel Tanks" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="14.7" />
+                        <Radius M="1.0" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+            <Tank>
+                <CylindricalTank>
+                    <Material Ref="Aluminum.2014" Phase="Solid" />
+                    <Length M="14.6" />
+                    <!-- true geometric radius: <OuterRadius M="0.99" /> -->
+                    <OuterRadius M="1.98" />
+                    <WallThickness Mm="4" />
+                </CylindricalTank>
+            </Tank>
+        </Components>
+
+        <!-- Raceway, avionics and rings. -->
+        <InertMasses Modify="Extend">
+            <SolidCylinderMass><Mass Kg="150"/><Length M="14"/><Radius M="1"/></SolidCylinderMass>
+        </InertMasses>
+
+        <Connectors Modify="Extend">
+            <Connector Key="_connector3TopInner" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+                <Flags>Internal</Flags>
+            </Connector>
+            <Connector Key="_connector4BottomInner" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+                <Flags>Internal</Flags>
+            </Connector>
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+            <Connector Key="_connector2Bottom" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+        </Connectors>
+        <AlignedGroups Modify="Extend">
+            <Aligned>
+                <Connectors>
+                    <Connector KeyRef="_connector1Top" />
+                    <Connector KeyRef="_connector3TopInner" />
+                </Connectors>
+            </Aligned>
+            <Aligned>
+                <Connectors>
+                    <Connector KeyRef="_connector2Bottom" />
+                    <Connector KeyRef="_connector4BottomInner" />
+                </Connectors>
+            </Aligned>
+        </AlignedGroups>
+    </Part>
+
+    <Part Id="PrismaTankA_Prefab_Interstage" Modify="Patch" DisplayName="Prisma Interstage">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Interstage" />
+            <EditorTag Ref="Coupling" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+        <!--
+             The decoupler names its connector by KeyRef, and that connector keeps the DecouplerJoint capability, as
+             on the stock fairings.
+        -->
+        <Connectors Modify="Extend">
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>DecouplerJoint</Capabilities>
+            </Connector>
+        </Connectors>
+        <InertMasses Modify="Extend">
+            <HollowOpenCylinderMass>
+                <Material Ref="Aluminum.2014" Phase="Solid" />
+                <Length M="2.4" />
+                <OuterRadius M="1" />
+                <WallThickness Mm="6" />
+            </HollowOpenCylinderMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Decoupler Force="2000">
+                <Connector KeyRef="_connector1Top" />
+            </Decoupler>
+            <!--
+                 A hollow ring of 12 boxes at radius 0.97 m, as on CoreFairingA_Prefab_Interstage2W2HA, so the upper
+                 stage engine inside can leave. Box k sits at 30 k degrees, and its X rotation is that angle minus 90
+                 degrees, which turns the thin box axis to the radial direction.
+            -->
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Box Key="BoxCollider1"><LocationAsmb X="0" Y="0.97" Z="0" /><Collider2Asmb X="-1.5708" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider2"><LocationAsmb X="0" Y="0.8400" Z="0.4850" /><Collider2Asmb X="-1.0472" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider3"><LocationAsmb X="0" Y="0.4850" Z="0.8400" /><Collider2Asmb X="-0.5236" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider4"><LocationAsmb X="0" Y="0" Z="0.97" /><Collider2Asmb X="0" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider5"><LocationAsmb X="0" Y="-0.4850" Z="0.8400" /><Collider2Asmb X="0.5236" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider6"><LocationAsmb X="0" Y="-0.8400" Z="0.4850" /><Collider2Asmb X="1.0472" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider7"><LocationAsmb X="0" Y="-0.97" Z="0" /><Collider2Asmb X="1.5708" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider8"><LocationAsmb X="0" Y="-0.8400" Z="-0.4850" /><Collider2Asmb X="2.0944" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider9"><LocationAsmb X="0" Y="-0.4850" Z="-0.8400" /><Collider2Asmb X="2.6180" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider10"><LocationAsmb X="0" Y="0" Z="-0.97" /><Collider2Asmb X="3.1416" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider11"><LocationAsmb X="0" Y="0.4850" Z="-0.8400" /><Collider2Asmb X="-2.6180" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                    <Box Key="BoxCollider12"><LocationAsmb X="0" Y="0.8400" Z="-0.4850" /><Collider2Asmb X="-2.0944" Y="0" Z="0" /><LengthX M="2.4" /><LengthY M="0.53" /><LengthZ M="0.06" /></Box>
+                </Colliders>
+            </Collider>
+        </Components>
+    </Part>
+</Assets>

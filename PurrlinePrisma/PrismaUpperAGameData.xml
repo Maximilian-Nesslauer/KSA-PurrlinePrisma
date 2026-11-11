@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Prisma by Purrline Rocketworks: game data of the upper stage. Each row patches the row of the same Id in
+     PrismaUpperAAssets.xml, so this file loads after it. As in the stock tanks, OuterRadius is twice the true radius
+     (the true value is in the comment beside it), and the mesh keeps the true size. The outer and inner connector
+     pairs let the 1 m Altair Vac sit inside the interstage. Control and Battery stand for the avionics, and four RCS
+     blocks give attitude control in a coast and roll control in a burn.
+-->
+<Assets>
+    <!--
+         One RCS block, placed four times. It has its own spherical tank for MMH and NTO, which the editor fills for
+         the Thruster role only, so the stage tank keeps the propane and the liquid oxygen. Each of the four bells is
+         its own thruster: the two along the stage give pitch and yaw, the two across it give roll. The chamber
+         follows the stock RCS thrusters (7 bar, mixture ratio 1.6), and the exit diameter of 0.16 m gives about 0.65
+         kN in vacuum.
+    -->
+    <SubPart Id="PrismaUpperA_Subpart_RcsBlock" Modify="Patch">
+        <InertMasses Modify="Extend">
+            <SolidSphereMass>
+                <LocationAsmb X="0" Y="0" Z="-1.03" />
+                <Mass Kg="5" />
+                <Radius M="0.1" />
+            </SolidSphereMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Tank Key="RcsTank">
+                <SphericalTank>
+                    <LocationAsmb X="0" Y="0" Z="-0.74" />
+                    <Material Ref="Aluminum.2014" Phase="Solid" />
+                    <OuterRadius M="0.20" />
+                    <WallThickness Mm="3" />
+                    <RoleAffinity>Thruster</RoleAffinity>
+                </SphericalTank>
+            </Tank>
+        </Components>
+        <RocketThrusterControllers Modify="Extend">
+            <RocketThrusterController Key="RcsAlongPlus">
+                <Rockets>
+                    <Rocket KeyRef="RcsAlongPlusRocket" />
+                </Rockets>
+            </RocketThrusterController>
+            <RocketThrusterController Key="RcsAlongMinus">
+                <Rockets>
+                    <Rocket KeyRef="RcsAlongMinusRocket" />
+                </Rockets>
+            </RocketThrusterController>
+            <RocketThrusterController Key="RcsAcrossPlus">
+                <Rockets>
+                    <Rocket KeyRef="RcsAcrossPlusRocket" />
+                </Rockets>
+            </RocketThrusterController>
+            <RocketThrusterController Key="RcsAcrossMinus">
+                <Rockets>
+                    <Rocket KeyRef="RcsAcrossMinusRocket" />
+                </Rockets>
+            </RocketThrusterController>
+        </RocketThrusterControllers>
+        <Rockets Modify="Extend">
+            <Rocket Key="RcsAlongPlusRocket">
+                <Core KeyRef="RcsAlongPlusChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="RcsAlongPlusNozzle" />
+                </Nozzles>
+            </Rocket>
+            <Rocket Key="RcsAlongMinusRocket">
+                <Core KeyRef="RcsAlongMinusChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="RcsAlongMinusNozzle" />
+                </Nozzles>
+            </Rocket>
+            <Rocket Key="RcsAcrossPlusRocket">
+                <Core KeyRef="RcsAcrossPlusChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="RcsAcrossPlusNozzle" />
+                </Nozzles>
+            </Rocket>
+            <Rocket Key="RcsAcrossMinusRocket">
+                <Core KeyRef="RcsAcrossMinusChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="RcsAcrossMinusNozzle" />
+                </Nozzles>
+            </Rocket>
+        </Rockets>
+        <RocketCores Modify="Extend">
+            <Combustor Key="RcsAlongPlusChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Container KeyRef="RcsTank" />
+                    </FeedsFrom>
+                </FeedsFroms>
+                <Plumbing>Service</Plumbing>
+                <Reaction Ref="MMH_NTO">
+                    <MixtureRatio>1.6</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="7" />
+                <ThermalEfficiency Value="0.95" />
+                <MinimumPulseTime Seconds="0.0054489795" />
+            </Combustor>
+            <Combustor Key="RcsAlongMinusChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Container KeyRef="RcsTank" />
+                    </FeedsFrom>
+                </FeedsFroms>
+                <Plumbing>Service</Plumbing>
+                <Reaction Ref="MMH_NTO">
+                    <MixtureRatio>1.6</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="7" />
+                <ThermalEfficiency Value="0.95" />
+                <MinimumPulseTime Seconds="0.0054489795" />
+            </Combustor>
+            <Combustor Key="RcsAcrossPlusChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Container KeyRef="RcsTank" />
+                    </FeedsFrom>
+                </FeedsFroms>
+                <Plumbing>Service</Plumbing>
+                <Reaction Ref="MMH_NTO">
+                    <MixtureRatio>1.6</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="7" />
+                <ThermalEfficiency Value="0.95" />
+                <MinimumPulseTime Seconds="0.0054489795" />
+            </Combustor>
+            <Combustor Key="RcsAcrossMinusChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Container KeyRef="RcsTank" />
+                    </FeedsFrom>
+                </FeedsFroms>
+                <Plumbing>Service</Plumbing>
+                <Reaction Ref="MMH_NTO">
+                    <MixtureRatio>1.6</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="7" />
+                <ThermalEfficiency Value="0.95" />
+                <MinimumPulseTime Seconds="0.0054489795" />
+            </Combustor>
+        </RocketCores>
+        <RocketNozzles Modify="Extend">
+            <DeLavalNozzle Key="RcsAlongPlusNozzle">
+                <ExitDiameter M="0.16" />
+                <FxExitDiameter M="0.06" />
+                <AreaRatio Value="40" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="0.70" />
+                <ExhaustLocation X="0.2136" Y="0.0000" Z="-1.0629" />
+                <ExhaustDirection X="0.97815" Y="0.00000" Z="-0.20791" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="RCS" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultRcsThruster" Action="On" />
+            </DeLavalNozzle>
+            <DeLavalNozzle Key="RcsAlongMinusNozzle">
+                <ExitDiameter M="0.16" />
+                <FxExitDiameter M="0.06" />
+                <AreaRatio Value="40" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="0.70" />
+                <ExhaustLocation X="-0.2136" Y="0.0000" Z="-1.0629" />
+                <ExhaustDirection X="-0.97815" Y="0.00000" Z="-0.20791" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="RCS" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultRcsThruster" Action="On" />
+            </DeLavalNozzle>
+            <DeLavalNozzle Key="RcsAcrossPlusNozzle">
+                <ExitDiameter M="0.16" />
+                <FxExitDiameter M="0.06" />
+                <AreaRatio Value="40" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="0.70" />
+                <ExhaustLocation X="0.0000" Y="0.2149" Z="-1.0553" />
+                <ExhaustDirection X="0.00000" Y="0.99027" Z="-0.13917" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="RCS" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultRcsThruster" Action="On" />
+            </DeLavalNozzle>
+            <DeLavalNozzle Key="RcsAcrossMinusNozzle">
+                <ExitDiameter M="0.16" />
+                <FxExitDiameter M="0.06" />
+                <AreaRatio Value="40" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="0.70" />
+                <ExhaustLocation X="0.0000" Y="-0.2149" Z="-1.0553" />
+                <ExhaustDirection X="0.00000" Y="-0.99027" Z="-0.13917" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="RCS" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultRcsThruster" Action="On" />
+            </DeLavalNozzle>
+        </RocketNozzles>
+    </SubPart>
+
+    <Part Id="PrismaUpperA_Prefab_Stage2" Modify="Patch" DisplayName="Prisma Stage 2">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Fuel Tanks" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="2.8" />
+                        <Radius M="1.0" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+            <Tank>
+                <CylindricalTank>
+                    <LocationAsmb X="-0.05" />
+                    <Material Ref="Aluminum.2014" Phase="Solid" />
+                    <Length M="2.5" />
+                    <!-- true geometric radius: <OuterRadius M="0.98" /> -->
+                    <OuterRadius M="1.96" />
+                    <WallThickness Mm="4" />
+                </CylindricalTank>
+            </Tank>
+            <Control />
+            <Battery>
+                <MaximumCapacity J="400000" />
+            </Battery>
+        </Components>
+
+        <!-- Forward skirt, then avionics and thrust frame. -->
+        <InertMasses Modify="Extend">
+            <HollowOpenCylinderMass>
+                <LocationAsmb X="1.10" />
+                <Material Ref="Aluminum.2014" Phase="Solid" />
+                <Length M="0.6" />
+                <OuterRadius M="1" />
+                <WallThickness Mm="6" />
+            </HollowOpenCylinderMass>
+            <SolidCylinderMass><LocationAsmb X="-1.15" /><Mass Kg="200"/><Length M="0.3"/><Radius M="0.9"/></SolidCylinderMass>
+        </InertMasses>
+
+        <Connectors Modify="Extend">
+            <Connector Key="_connector3TopInner" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+                <Flags>Internal</Flags>
+            </Connector>
+            <Connector Key="_connector4BottomInner" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+                <Flags>Internal</Flags>
+            </Connector>
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+            <Connector Key="_connector2Bottom" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+        </Connectors>
+        <AlignedGroups Modify="Extend">
+            <Aligned>
+                <Connectors>
+                    <Connector KeyRef="_connector1Top" />
+                    <Connector KeyRef="_connector3TopInner" />
+                </Connectors>
+            </Aligned>
+            <Aligned>
+                <Connectors>
+                    <Connector KeyRef="_connector2Bottom" />
+                    <Connector KeyRef="_connector4BottomInner" />
+                </Connectors>
+            </Aligned>
+        </AlignedGroups>
+    </Part>
+</Assets>

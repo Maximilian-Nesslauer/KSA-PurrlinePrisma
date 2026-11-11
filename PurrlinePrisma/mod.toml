@@ -1,0 +1,18 @@
+name = "Prisma by Purrline Rocketworks"
+version = "1.0.0"
+description = "Parts of the Prisma small satellite launcher by the fictional Purrline Rocketworks, inspired by Spectrum from Isar Aerospace. Not affiliated with Isar Aerospace."
+assets = [
+    "PrismaTankBAssets.xml",
+    "PrismaTankAAssets.xml",
+    "AltairEngineAAssets.xml",
+    "PrismaUpperAAssets.xml",
+    "PrismaFairingAAssets.xml",
+    "PrismaPayloadAAssets.xml",
+    "PrismaGroundAAssets.xml",
+    "PrismaTankAGameData.xml",
+    "AltairEngineAGameData.xml",
+    "PrismaUpperAGameData.xml",
+    "PrismaFairingAGameData.xml",
+    "PrismaPayloadAGameData.xml",
+    "PrismaGroundAGameData.xml",
+]

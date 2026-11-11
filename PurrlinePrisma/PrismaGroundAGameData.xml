@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Prisma by Purrline Rocketworks: game data of the hold-down ring and the strongback. Each row patches the row of
+     the same Id in PrismaGroundAAssets.xml, so this file loads after it. Both parts stand on the pad deck, 0.30 m
+     below the nozzle exits of stage 1. The ring joins the engine bay with a decoupler and the strongback stands on
+     the ring, so both stay on the pad when the first stage fires. Until then the editor counts their mass in the
+     thrust-to-weight ratio. No collider of the ring is closer than 1.8 m to the axis, so nothing touches the engine
+     bay or the plumes. The masses and the decoupler force are estimates.
+-->
+<Assets>
+    <Part Id="PrismaGroundA_Prefab_HoldDownRing" Modify="Patch" DisplayName="Prisma Hold-down Ring">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Coupling" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+
+        <!--
+             The release at lift-off. The small force only cuts the joint, so the ring and the strongback stay
+             standing. The decoupler names its connector by KeyRef, and that connector keeps the DecouplerJoint
+             capability.
+        -->
+        <Connectors Modify="Extend">
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>DecouplerJoint</Capabilities>
+            </Connector>
+        </Connectors>
+        <Components Modify="Extend">
+            <Decoupler Force="50">
+                <Connector KeyRef="_connector1Top" />
+            </Decoupler>
+            <!-- Four clamp columns, 1.3 m high from the deck, and four I-beam flats of the frame. -->
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Box Key="BoxCollider1"><LocationAsmb X="0" Y="2.425" Z="0" /><Collider2Asmb X="0" Y="0" Z="0" /><LengthX M="1.3" /><LengthY M="1.25" /><LengthZ M="1.3" /></Box>
+                    <Box Key="BoxCollider2"><LocationAsmb X="0" Y="0" Z="2.425" /><Collider2Asmb X="1.5708" Y="0" Z="0" /><LengthX M="1.3" /><LengthY M="1.25" /><LengthZ M="1.3" /></Box>
+                    <Box Key="BoxCollider3"><LocationAsmb X="0" Y="-2.425" Z="0" /><Collider2Asmb X="3.1416" Y="0" Z="0" /><LengthX M="1.3" /><LengthY M="1.25" /><LengthZ M="1.3" /></Box>
+                    <Box Key="BoxCollider4"><LocationAsmb X="0" Y="0" Z="-2.425" /><Collider2Asmb X="-1.5708" Y="0" Z="0" /><LengthX M="1.3" /><LengthY M="1.25" /><LengthZ M="1.3" /></Box>
+                    <Box Key="BoxCollider5"><LocationAsmb X="-0.55" Y="1.591" Z="-1.591" /><Collider2Asmb X="-0.7854" Y="0" Z="0" /><LengthX M="0.2" /><LengthY M="0.36" /><LengthZ M="2.0131" /></Box>
+                    <Box Key="BoxCollider6"><LocationAsmb X="-0.55" Y="1.591" Z="1.591" /><Collider2Asmb X="0.7854" Y="0" Z="0" /><LengthX M="0.2" /><LengthY M="0.36" /><LengthZ M="2.0131" /></Box>
+                    <Box Key="BoxCollider7"><LocationAsmb X="-0.55" Y="-1.591" Z="1.591" /><Collider2Asmb X="2.3562" Y="0" Z="0" /><LengthX M="0.2" /><LengthY M="0.36" /><LengthZ M="2.0131" /></Box>
+                    <Box Key="BoxCollider8"><LocationAsmb X="-0.55" Y="-1.591" Z="-1.591" /><Collider2Asmb X="-2.3562" Y="0" Z="0" /><LengthX M="0.2" /><LengthY M="0.36" /><LengthZ M="2.0131" /></Box>
+                </Colliders>
+            </Collider>
+        </Components>
+
+        <!-- 1200 kg of steel near the deck, as a ring of about 2.3 m radius (estimate). -->
+        <InertMasses Modify="Extend">
+            <CustomMass>
+                <LocationAsmb X="-0.15" />
+                <Mass Kg="1200" />
+                <MassSpecificInertia Ixx="5.0" Iyy="2.7" Izz="2.7" />
+            </CustomMass>
+        </InertMasses>
+    </Part>
+
+    <Part Id="PrismaGroundA_Prefab_Strongback" Modify="Patch" DisplayName="Prisma Strongback">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Structural" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+
+        <!--
+             Three stacked boxes over the lattice up to the top platform and one over the foot. No box covers the
+             raceway, the hoses, the ladder or the arms, so the rising vehicle cannot touch them. The boxes turn with
+             the lattice by -45 degrees about X.
+        -->
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Box Key="BoxCollider1"><LocationAsmb X="-9.1" Y="0" Z="0" /><Collider2Asmb X="-0.7854" Y="0" Z="0" /><LengthX M="8.6" /><LengthY M="1.6" /><LengthZ M="1.6" /></Box>
+                    <Box Key="BoxCollider2"><LocationAsmb X="-0.5" Y="0" Z="0" /><Collider2Asmb X="-0.7854" Y="0" Z="0" /><LengthX M="8.6" /><LengthY M="1.6" /><LengthZ M="1.6" /></Box>
+                    <Box Key="BoxCollider3"><LocationAsmb X="8.1" Y="0" Z="0" /><Collider2Asmb X="-0.7854" Y="0" Z="0" /><LengthX M="8.6" /><LengthY M="1.6" /><LengthZ M="1.6" /></Box>
+                    <Box Key="BoxCollider4"><LocationAsmb X="-13.3" Y="0.9016" Z="-0.9016" /><Collider2Asmb X="-0.7854" Y="0" Z="0" /><LengthX M="0.2" /><LengthY M="1.85" /><LengthZ M="1.9" /></Box>
+                </Colliders>
+            </Collider>
+        </Components>
+
+        <!-- 1500 kg at the middle of the lattice (estimate), as a slender bar 25.6 m long. -->
+        <InertMasses Modify="Extend">
+            <CustomMass>
+                <LocationAsmb X="-1.1" />
+                <Mass Kg="1500" />
+                <MassSpecificInertia Ixx="0.6" Iyy="54.6" Izz="54.6" />
+            </CustomMass>
+        </InertMasses>
+    </Part>
+</Assets>

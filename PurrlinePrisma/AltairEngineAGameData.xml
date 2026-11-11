@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Prisma by Purrline Rocketworks: game data of the Altair and Altair Vac engines and of the engine bay with nine
+     Altair. Each row patches the row of the same Id in AltairEngineAAssets.xml, so this file loads after it. The
+     engines start from the stock LR91 engines (CorePropulsionA_Prefab_EngineA2 and EngineA3) and burn liquid oxygen
+     and propane (ExtProp_Propalox from the mod Extended Propellants) at a mixture ratio of 2.7. The chamber pressure
+     is 149 bar instead of the real 47 bar, because the tanks follow the stock convention of about four times the true
+     volume; this gives the full vehicle a lift-off thrust-to-weight ratio of about 1.4. The nozzle exit diameter and
+     area ratio come from the mesh. The origin of each engine subpart is its gimbal pivot, so the rows add only the
+     gimbal limits. A ConsumerFeedWiring feeds only the core of its own placed subpart, so the engine bay has one
+     wiring per engine.
+-->
+<Assets>
+    <!--
+         Plumes: the stock templates EngineAMed and EngineACompact with a yellow to orange gradient from the nozzle
+         (Color0) to the far end (Color3). The brightness is lower than stock, so the exhaust light does not wash the
+         engine out to white.
+    -->
+    <VolumetricExhaustTemplate Id="PurrlineAltairPlume">
+        <LengthWeights>
+            <RadiusWeight Value="0.2"/>
+            <NozzlePressureWeight Value="25.0"/>
+            <JetExpansionWeight Value="150.0"/>
+            <ExitMachNumberWeight Value="1.0"/>
+        </LengthWeights>
+        <Absorption>
+            <Density Value="0.0" />
+            <ScatteringBrightness Value="0.25" />
+            <ScatteringPhaseEccentricity Value="0.2" />
+        </Absorption>
+        <Emission>
+            <Brightness Value="25" />
+            <ColorGradient>
+                <Color0 R="1.0" G="0.93" B="0.5" />
+                <Color1 R="1.0" G="0.78" B="0.2" />
+                <Color2 R="1.0" G="0.62" B="0.10" />
+                <Color3 R="0.95" G="0.50" B="0.04" />
+            </ColorGradient>
+            <Flow>
+                <MachDiamonds>
+                    <Brightness Value="5" />
+                    <Color R="1" G="1" B="1" />
+                    <LeadIn Value="0.23" />
+                    <LeadOut Value="0.65" />
+                    <MiddleRadius Value="1.0" />
+                    <IncidentShockHeight Value="0.45" />
+                    <IncidentShockCurve Value="1.0" />
+                </MachDiamonds>
+            </Flow>
+        </Emission>
+        <Noise>
+            <DensityNoise>
+                <Size Value="20.0" />
+                <Intensity Value="0.5" />
+            </DensityNoise>
+            <ShapeNoise>
+                <Size Value="10" />
+                <Intensity Value="0.2" />
+            </ShapeNoise>
+            <RadialShapeNoise>
+                <Size Value="1.0" />
+                <Speed Value="20" />
+                <Intensity Value="0.2" />
+            </RadialShapeNoise>
+        </Noise>
+        <Quality VolumetricVesselShadows="false" >
+            <SampleCount Value="26" />
+            <SelfShadowSampleCount Value="0" />
+        </Quality>
+        <StartupTransient>
+            <Duration Years="0" Months="0" Weeks="0" Days="0" Hours="0" Minutes="0" Seconds="0.15" />
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <DensityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </DensityCurve>
+            <VelocityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </VelocityCurve>
+            <EmissiveSizeCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </EmissiveSizeCurve>
+        </StartupTransient>
+        <ShutdownTransient>
+            <Duration Years="0" Months="0" Weeks="0" Days="0" Hours="0" Minutes="0" Seconds="0.15" />
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <DensityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </DensityCurve>
+            <VelocityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </VelocityCurve>
+            <EmissiveSizeCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </EmissiveSizeCurve>
+        </ShutdownTransient>
+        <PressureModifiers>
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="-2.756303548812866" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.9967250823974609" />
+                        <Value Value="0.04641341418027878" />
+                        <InTangent Value="0.02595527283847332" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <PlumeLengthCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="1.4736522436141968" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1.5" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PlumeLengthCurve>
+            <MachDiamondBrightnessCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.499804824590683" />
+                        <Value Value="-0.0076800137758255005" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.8744230270385742" />
+                        <Value Value="0.9913088083267212" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </MachDiamondBrightnessCurve>
+            <TroughAndRidgeVisibilityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.5026276111602783" />
+                        <Value Value="-0.003999978303909302" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.8796268105506897" />
+                        <Value Value="1.0040000677108765" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </TroughAndRidgeVisibilityCurve>
+            <PressureWaveDeformationCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.49920031428337097" />
+                        <Value Value="-0.0040000081062316895" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PressureWaveDeformationCurve>
+            <AbsorptionDensityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </AbsorptionDensityCurve>
+            <ConcavityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ConcavityCurve>
+        </PressureModifiers>
+        <ThrottleModifiers>
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.0" />
+                        <Value Value="0.5" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <PlumeLengthCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0.25" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PlumeLengthCurve>
+            <MachDiamondBrightnessCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.35" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.85" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </MachDiamondBrightnessCurve>
+            <TroughAndRidgeVisibilityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.35" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.85" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </TroughAndRidgeVisibilityCurve>
+            <PressureWaveDeformationCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.35" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.85" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PressureWaveDeformationCurve>
+        </ThrottleModifiers>
+    </VolumetricExhaustTemplate>
+
+    <!--
+         The Vac plume needs a high brightness to show against the lit Earth, because the brightness sets the density
+         at which the gas stops being visible. Above about 600 the core clips to a white disc. RadiusWeight 0.3 (stock
+         0.2) makes the plume longer in space. LeadIn and LeadOut of MachDiamonds only place the diamonds.
+    -->
+    <VolumetricExhaustTemplate Id="PurrlineAltairVacPlume">
+        <LengthWeights>
+            <RadiusWeight Value="0.3"/>
+            <NozzlePressureWeight Value="25.0"/>
+            <JetExpansionWeight Value="150.0"/>
+            <ExitMachNumberWeight Value="1.0"/>
+        </LengthWeights>
+        <Absorption>
+            <Density Value="0" />
+            <ScatteringBrightness Value="0.25" />
+            <ScatteringPhaseEccentricity Value="0.2" />
+        </Absorption>
+        <Emission>
+            <Brightness Value="600" />
+            <ColorGradient>
+                <Color0 R="1.0" G="0.82" B="0.36" />
+                <Color1 R="1.0" G="0.64" B="0.16" />
+                <Color2 R="0.95" G="0.46" B="0.08" />
+                <Color3 R="0.78" G="0.32" B="0.04" />
+            </ColorGradient>
+            <Flow>
+                <MachDiamonds>
+                    <Brightness Value="25" />
+                    <Color R="1" G="1" B="1" />
+                </MachDiamonds>
+            </Flow>
+        </Emission>
+        <Noise>
+            <DensityNoise>
+                <Size Value="20" />
+                <Intensity Value="0.5" />
+            </DensityNoise>
+            <ShapeNoise>
+                <Size Value="10" />
+                <Intensity Value="0.05" />
+            </ShapeNoise>
+            <RadialShapeNoise>
+                <Size Value="0.1" />
+                <Speed Value="20" />
+                <Intensity Value="0.2" />
+            </RadialShapeNoise>
+        </Noise>
+        <Quality VolumetricVesselShadows="false" >
+            <SampleCount Value="13" />
+            <SelfShadowSampleCount Value="0" />
+        </Quality>
+        <StartupTransient>
+            <Duration Years="0" Months="0" Weeks="0" Days="0" Hours="0" Minutes="0" Seconds="0.15" />
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <DensityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </DensityCurve>
+            <VelocityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </VelocityCurve>
+            <EmissiveSizeCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </EmissiveSizeCurve>
+        </StartupTransient>
+        <ShutdownTransient>
+            <Duration Years="0" Months="0" Weeks="0" Days="0" Hours="0" Minutes="0" Seconds="0.15" />
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <DensityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </DensityCurve>
+            <VelocityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </VelocityCurve>
+            <EmissiveSizeCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </EmissiveSizeCurve>
+        </ShutdownTransient>
+        <PressureModifiers>
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="-2.756303548812866" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.9967250823974609" />
+                        <Value Value="0.04641341418027878" />
+                        <InTangent Value="0.02595527283847332" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <PlumeLengthCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="1.4736522436141968" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1.5" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PlumeLengthCurve>
+            <MachDiamondBrightnessCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.499804824590683" />
+                        <Value Value="-0.0076800137758255005" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.8744230270385742" />
+                        <Value Value="0.9913088083267212" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </MachDiamondBrightnessCurve>
+            <TroughAndRidgeVisibilityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.5026276111602783" />
+                        <Value Value="-0.003999978303909302" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.8796268105506897" />
+                        <Value Value="1.0040000677108765" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </TroughAndRidgeVisibilityCurve>
+            <PressureWaveDeformationCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.49920031428337097" />
+                        <Value Value="-0.0040000081062316895" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PressureWaveDeformationCurve>
+            <AbsorptionDensityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </AbsorptionDensityCurve>
+            <ConcavityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ConcavityCurve>
+        </PressureModifiers>
+        <ThrottleModifiers>
+            <ExpansionCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.0" />
+                        <Value Value="0.5" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </ExpansionCurve>
+            <PlumeLengthCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0" />
+                        <Value Value="0.25" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="1" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PlumeLengthCurve>
+            <MachDiamondBrightnessCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.35" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.85" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </MachDiamondBrightnessCurve>
+            <TroughAndRidgeVisibilityCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.35" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.85" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </TroughAndRidgeVisibilityCurve>
+            <PressureWaveDeformationCurve>
+                <SplinePoints>
+                    <SplinePoint>
+                        <Key Value="0.35" />
+                        <Value Value="0" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                    <SplinePoint>
+                        <Key Value="0.85" />
+                        <Value Value="1" />
+                        <InTangent Value="0" />
+                        <OutTangent Value="0" />
+                    </SplinePoint>
+                </SplinePoints>
+            </PressureWaveDeformationCurve>
+        </ThrottleModifiers>
+    </VolumetricExhaustTemplate>
+
+    <SubPart Id="AltairEngineA_Subpart_AltairAssembly" Modify="Patch">
+        <Rockets Modify="Extend">
+            <Rocket Key="Engine">
+                <Core KeyRef="ThrustChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="Nozzle" />
+                </Nozzles>
+            </Rocket>
+        </Rockets>
+        <RocketCores Modify="Extend">
+            <Combustor Key="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom FromParent="true" />
+                </FeedsFroms>
+                <Reaction Ref="ExtProp_Propalox">
+                    <MixtureRatio>2.7</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="149" />
+                <ThermalEfficiency Value="1" />
+                <MinimumThrottle Value="0.2" />
+            </Combustor>
+        </RocketCores>
+        <RocketNozzles Modify="Extend">
+            <DeLavalNozzle Key="Nozzle">
+                <ExitDiameter M="0.44" />
+                <FxExitDiameter M="0.44" />
+                <AreaRatio Value="14" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="1" />
+                <ExhaustLocation X="-1.05" Y="0.0" Z="0.0" />
+                <ExhaustDirection X="-1" Y="0" Z="0" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="PurrlineAltairPlume" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultEngineSoundBehavior" Action="On" />
+            </DeLavalNozzle>
+        </RocketNozzles>
+    </SubPart>
+
+    <!--
+         The bay engine is the visible part of the sea level Altair (throat, flange and nozzle), placed nine times in
+         the engine bay, with the same rocket data as the single Altair.
+    -->
+    <SubPart Id="AltairEngineA_Subpart_AltairBayEngine" Modify="Patch">
+        <Rockets Modify="Extend">
+            <Rocket Key="Engine">
+                <Core KeyRef="ThrustChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="Nozzle" />
+                </Nozzles>
+            </Rocket>
+        </Rockets>
+        <RocketCores Modify="Extend">
+            <Combustor Key="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom FromParent="true" />
+                </FeedsFroms>
+                <Reaction Ref="ExtProp_Propalox">
+                    <MixtureRatio>2.7</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="149" />
+                <ThermalEfficiency Value="1" />
+                <MinimumThrottle Value="0.2" />
+            </Combustor>
+        </RocketCores>
+        <RocketNozzles Modify="Extend">
+            <DeLavalNozzle Key="Nozzle">
+                <ExitDiameter M="0.44" />
+                <FxExitDiameter M="0.44" />
+                <AreaRatio Value="14" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="1" />
+                <ExhaustLocation X="-1.05" Y="0.0" Z="0.0" />
+                <ExhaustDirection X="-1" Y="0" Z="0" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="PurrlineAltairPlume" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultEngineSoundBehavior" Action="On" />
+            </DeLavalNozzle>
+        </RocketNozzles>
+    </SubPart>
+
+    <SubPart Id="AltairEngineA_Subpart_AltairVacAssembly" Modify="Patch">
+        <Rockets Modify="Extend">
+            <Rocket Key="Engine">
+                <Core KeyRef="ThrustChamber" />
+                <Nozzles>
+                    <Nozzle KeyRef="Nozzle" />
+                </Nozzles>
+            </Rocket>
+        </Rockets>
+        <RocketCores Modify="Extend">
+            <Combustor Key="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom FromParent="true" />
+                </FeedsFroms>
+                <Reaction Ref="ExtProp_Propalox">
+                    <MixtureRatio>2.7</MixtureRatio>
+                </Reaction>
+                <MaxPressure Bar="149" />
+                <ThermalEfficiency Value="1" />
+                <MinimumThrottle Value="0.1" />
+            </Combustor>
+        </RocketCores>
+        <RocketNozzles Modify="Extend">
+            <DeLavalNozzle Key="Nozzle">
+                <ExitDiameter M="1.0" />
+                <FxExitDiameter M="1.0" />
+                <AreaRatio Value="75" />
+                <FlowEfficiency Value="1" />
+                <ExpansionEfficiency Value="1" />
+                <ExhaustLocation X="-1.85" Y="0.0" Z="0.0" />
+                <ExhaustDirection X="-1" Y="0" Z="0" />
+                <ReactionPlumes>
+                    <ReactionPlume Default="true">
+                        <VolumetricExhaust Ref="PurrlineAltairVacPlume" />
+                    </ReactionPlume>
+                </ReactionPlumes>
+                <SoundEvent Ref="DefaultEngineSoundBehavior" Action="On" />
+            </DeLavalNozzle>
+        </RocketNozzles>
+    </SubPart>
+
+    <Part Id="AltairEngineA_Prefab_EngineBay" Modify="Patch" DisplayName="Altair Engine Bay" CrashTolerance="3e6">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Engines" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+        <RocketEngineControllers Modify="Extend">
+            <RocketEngineController Key="Altair">
+                <Rockets>
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine1" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine2" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine3" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine4" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine5" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine6" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine7" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine8" KeyRef="Engine" />
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine9" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+        </RocketEngineControllers>
+        <ConsumerFeedWirings Modify="Extend">
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine1" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine2" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine3" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine4" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine5" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine6" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine7" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine8" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairBayEngine9" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+        </ConsumerFeedWirings>
+        <Connectors Modify="Extend">
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+        </Connectors>
+        <Gimbals Modify="Extend">
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine1" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine2" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine3" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine4" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine5" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine6" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine7" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine8" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+            <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine9" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+        </Gimbals>
+        <!--
+             The skirt and nine engines of 130 kg each, plus 350 kg for the thrust frame and the heat shield. The
+             thrust frame sits inside the closed bay and has no mesh.
+        -->
+        <InertMasses Modify="Extend">
+            <HollowOpenCylinderMass>
+                <LocationAsmb X="0.30" />
+                <Material Ref="Aluminum.2014" Phase="Solid" />
+                <Length M="1.0" />
+                <OuterRadius M="1" />
+                <WallThickness Mm="6" />
+            </HollowOpenCylinderMass>
+            <SolidCylinderMass><LocationAsmb X="-0.10" /><Mass Kg="1520"/><Length M="0.9"/><Radius M="0.8"/></SolidCylinderMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0.30" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="1.0" />
+                        <Radius M="1.0" />
+                    </Cylinder>
+                    <Cylinder Key="CylinderCollider2">
+                        <LocationAsmb X="-0.50" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="0.6" />
+                        <Radius M="0.9" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+        </Components>
+    </Part>
+
+    <Part Id="AltairEngineA_Prefab_Altair" Modify="Patch" DisplayName="Altair" CrashTolerance="3e6">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Engines" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="0.5"/>
+        </Diameters>
+        <RocketEngineControllers Modify="Extend">
+            <RocketEngineController Key="Altair">
+                <Rockets>
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairAssembly1" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+        </RocketEngineControllers>
+        <ConsumerFeedWirings Modify="Extend">
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairAssembly1" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+        </ConsumerFeedWirings>
+        <Connectors Modify="Extend">
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+        </Connectors>
+        <Gimbals Modify="Extend">
+            <Gimbal Key="AltairEngineA_Subpart_AltairAssembly1" Modify="Patch">
+                <MaxAngleY Degrees="5" />
+                <MaxAngleZ Degrees="5" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+        </Gimbals>
+        <InertMasses Modify="Extend">
+            <SolidSphereMass>
+                <LocationAsmb X="0.2" />
+                <Mass Kg="130" />
+                <Radius M="0.15" />
+            </SolidSphereMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0.27" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="0.5" />
+                        <Radius M="0.15" />
+                    </Cylinder>
+                    <Cylinder Key="CylinderCollider2">
+                        <LocationAsmb X="-0.27" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="0.5" />
+                        <Radius M="0.22" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+        </Components>
+    </Part>
+
+    <Part Id="AltairEngineA_Prefab_AltairVac" Modify="Patch" DisplayName="Altair Vac" CrashTolerance="3e6">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Engines" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="1"/>
+        </Diameters>
+        <RocketEngineControllers Modify="Extend">
+            <RocketEngineController Key="AltairVac">
+                <Rockets>
+                    <Rocket SubPart="AltairEngineA_Subpart_AltairVacAssembly1" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+        </RocketEngineControllers>
+        <ConsumerFeedWirings Modify="Extend">
+            <ConsumerFeedWiring SubPart="AltairEngineA_Subpart_AltairVacAssembly1" KeyRef="ThrustChamber">
+                <FeedsFroms>
+                    <FeedsFrom>
+                        <Connector KeyRef="_connector1Top" />
+                    </FeedsFrom>
+                </FeedsFroms>
+            </ConsumerFeedWiring>
+        </ConsumerFeedWirings>
+        <Connectors Modify="Extend">
+            <Connector Key="_connector1Top" Modify="Patch">
+                <Capabilities>BulkFluid</Capabilities>
+            </Connector>
+        </Connectors>
+        <Gimbals Modify="Extend">
+            <Gimbal Key="AltairEngineA_Subpart_AltairVacAssembly1" Modify="Patch">
+                <MaxAngleY Degrees="2" />
+                <MaxAngleZ Degrees="2" />
+                <ConstrainToCircle Value="false" />
+            </Gimbal>
+        </Gimbals>
+        <InertMasses Modify="Extend">
+            <SolidSphereMass>
+                <LocationAsmb X="0.6" />
+                <Mass Kg="160" />
+                <Radius M="0.2" />
+            </SolidSphereMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0.7" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="0.45" />
+                        <Radius M="0.2" />
+                    </Cylinder>
+                    <Cylinder Key="CylinderCollider2">
+                        <LocationAsmb X="-0.3" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="1.3" />
+                        <Radius M="0.5" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+        </Components>
+    </Part>
+</Assets>

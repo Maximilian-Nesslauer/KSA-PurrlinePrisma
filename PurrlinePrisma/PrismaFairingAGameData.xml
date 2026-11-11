@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Prisma by Purrline Rocketworks: game data of the payload fairing. Each row patches the row of the same Id in
+     PrismaFairingAAssets.xml, so this file loads after it. The base carries the payload on an inner 1 m connector and
+     the two halves on radial connectors. Each half is a decoupler on its own connector, so it moves sideways at the
+     split (force 800, about 6.7 m/s for a half of 120 kg). The hull colliders of a half come from the prefab GLB, so
+     this file adds none.
+-->
+<Assets>
+    <Part Id="PrismaFairingA_Prefab_FairingBase" Modify="Patch" DisplayName="Prisma Fairing Base">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Coupling" />
+            <EditorTag Ref="Interstage" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+        <Connectors Modify="Extend">
+            <Connector Key="_connector3TopInner" Modify="Patch">
+                <Flags>Internal</Flags>
+            </Connector>
+        </Connectors>
+        <AlignedGroups Modify="Extend">
+            <Aligned>
+                <Connectors>
+                    <Connector KeyRef="_connector2Top" />
+                    <Connector KeyRef="_connector3TopInner" />
+                </Connectors>
+            </Aligned>
+        </AlignedGroups>
+        <InertMasses Modify="Extend">
+            <HollowOpenCylinderMass>
+                <Material Ref="Aluminum.2014" Phase="Solid" />
+                <Length M="0.4" />
+                <OuterRadius M="1" />
+                <WallThickness Mm="8" />
+            </HollowOpenCylinderMass>
+            <!-- Payload adapter and separation system. -->
+            <SolidCylinderMass><Mass Kg="40"/><Length M="0.3"/><Radius M="0.5"/></SolidCylinderMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="0.4" />
+                        <Radius M="1.0" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+        </Components>
+    </Part>
+
+    <Part Id="PrismaFairingA_Prefab_FairingHalf" Modify="Patch" DisplayName="Prisma Fairing Half">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Interstage" />
+            <EditorTag Ref="Structural" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="2"/>
+        </Diameters>
+        <!--
+             The decoupler names its connector by KeyRef, and that connector keeps the DecouplerJoint capability, as
+             on the stock fairings.
+        -->
+        <Connectors Modify="Extend">
+            <Connector Key="_connector1Base" Modify="Patch">
+                <Capabilities>DecouplerJoint</Capabilities>
+            </Connector>
+        </Connectors>
+        <Components Modify="Extend">
+            <Decoupler Force="800">
+                <Connector KeyRef="_connector1Base" />
+            </Decoupler>
+        </Components>
+        <InertMasses Modify="Extend">
+            <CustomMass>
+                <LocationAsmb X="2.4" Y="0" Z="-0.55" />
+                <Mass Kg="120" />
+                <MassSpecificInertia Ixx="0.6" Iyy="3.0" Izz="3.0" />
+            </CustomMass>
+        </InertMasses>
+    </Part>
+</Assets>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Prisma by Purrline Rocketworks: game data of the payload mass simulator, a 1000 kg dummy payload for test
+     flights. Each row patches the row of the same Id in PrismaPayloadAAssets.xml, so this file loads after it. It
+     sits on the inner 1 m connector of the fairing base. The mass is one CustomMass with the inertia of a solid
+     cylinder of radius 0.6 m and height 1.0 m. The connector carries no fluid, so no tank fills through it.
+-->
+<Assets>
+    <Part Id="PrismaPayloadA_Prefab_MassSimulator" Modify="Patch" DisplayName="Prisma Payload Mass Simulator (1 t)">
+        <EditorTags Modify="Extend">
+            <EditorTag Ref="Cargo" />
+        </EditorTags>
+        <Diameters Modify="Extend">
+            <Diameter M="1"/>
+        </Diameters>
+        <InertMasses Modify="Extend">
+            <CustomMass>
+                <LocationAsmb X="0.08" Y="0" Z="0" />
+                <Mass Kg="1000" />
+                <MassSpecificInertia Ixx="0.18" Iyy="0.17" Izz="0.17" />
+            </CustomMass>
+        </InertMasses>
+        <Components Modify="Extend">
+            <Collider Key="Collider1">
+                <Colliders>
+                    <Cylinder Key="CylinderCollider1">
+                        <LocationAsmb X="0.09" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="1.02" />
+                        <Radius M="0.6" />
+                    </Cylinder>
+                    <Cylinder Key="CylinderCollider2">
+                        <LocationAsmb X="-0.565" Y="0" Z="0" />
+                        <Collider2Asmb X="0" Y="0" Z="-1.5708" />
+                        <LengthY M="0.31" />
+                        <Radius M="0.47" />
+                    </Cylinder>
+                </Colliders>
+            </Collider>
+        </Components>
+    </Part>
+</Assets>
