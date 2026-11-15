@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Prisma by Purrline Rocketworks: game data of the payload fairing. Each row patches the row of the same Id in
-     PrismaFairingAAssets.xml, so this file loads after it. The base carries the payload on an inner 1 m connector and
-     the two halves on radial connectors. Each half is a decoupler on its own connector, so it moves sideways at the
-     split (force 800, about 6.7 m/s for a half of 120 kg). The hull colliders of a half come from the prefab GLB, so
-     this file adds none.
+     Game data of the 2 m fairing (the set PrismaFairingA). Prisma by Purrline Rocketworks and Fairings by Purrline
+     Rocketworks both ship this file unchanged. Each Modify="Patch" row changes the row of the same Id in
+     PrismaFairingAAssets.xml, so this file loads after it.
+     The row of the variant member (the B part, black carbon) comes after a RemoveIfExists row with the same Id, so
+     that the game loads it one time when both mods are enabled. A variant member takes all game data from its head
+     (the A part, white paint) and has only its own subparts. A build script writes this file; do not edit it by hand.
 -->
 <Assets>
-    <Part Id="PrismaFairingA_Prefab_FairingBase" Modify="Patch" DisplayName="Prisma Fairing Base">
+
+    <!--
+         The prefabs of this set place subparts of the PurrlineFairing2A and PurrlineFairing2B sets, so the
+         set has no textures. The import tool still writes a material row for it, and a material without
+         its three maps stops the game at start, so this row removes it.
+    -->
+    <PbrMaterial Id="PrismaFairingA_Material" Modify="Remove" />
+
+    <Part Id="PrismaFairingA_Prefab_FairingBase" Modify="Patch" DisplayName="Fairing Base 2 m">
         <EditorTags Modify="Extend">
             <EditorTag Ref="Coupling" />
             <EditorTag Ref="Interstage" />
         </EditorTags>
         <Diameters Modify="Extend">
-            <Diameter M="2"/>
+            <Diameter M="2" />
         </Diameters>
+        <!-- The payload sits on the inner connector, which is aligned with the outer top connector. -->
         <Connectors Modify="Extend">
             <Connector Key="_connector3TopInner" Modify="Patch">
                 <Flags>Internal</Flags>
@@ -28,6 +38,7 @@
                 </Connectors>
             </Aligned>
         </AlignedGroups>
+        <!-- The ring, and the payload adapter with the separation system, about 96 kg in all. -->
         <InertMasses Modify="Extend">
             <HollowOpenCylinderMass>
                 <Material Ref="Aluminum.2014" Phase="Solid" />
@@ -35,34 +46,43 @@
                 <OuterRadius M="1" />
                 <WallThickness Mm="8" />
             </HollowOpenCylinderMass>
-            <!-- Payload adapter and separation system. -->
-            <SolidCylinderMass><Mass Kg="40"/><Length M="0.3"/><Radius M="0.5"/></SolidCylinderMass>
+            <SolidCylinderMass>
+                <Mass Kg="40" />
+                <Length M="0.3" />
+                <Radius M="0.5" />
+            </SolidCylinderMass>
         </InertMasses>
         <Components Modify="Extend">
             <Collider Key="Collider1">
                 <Colliders>
                     <Cylinder Key="CylinderCollider1">
-                        <LocationAsmb X="0" Y="0" Z="0" />
+                        <LocationAsmb X="-0.05" />
                         <Collider2Asmb X="0" Y="0" Z="-1.5708" />
-                        <LengthY M="0.4" />
-                        <Radius M="1.0" />
+                        <LengthY M="0.3" />
+                        <Radius M="1" />
                     </Cylinder>
                 </Colliders>
             </Collider>
         </Components>
     </Part>
 
-    <Part Id="PrismaFairingA_Prefab_FairingHalf" Modify="Patch" DisplayName="Prisma Fairing Half">
+    <Part Id="PrismaFairingA_Prefab_FairingHalf" Modify="Patch" DisplayName="Fairing Half 2 m Medium">
         <EditorTags Modify="Extend">
             <EditorTag Ref="Interstage" />
             <EditorTag Ref="Structural" />
         </EditorTags>
         <Diameters Modify="Extend">
-            <Diameter M="2"/>
+            <Diameter M="2" />
         </Diameters>
+        <!-- The black carbon variant. The import tool groups only Ids that end in A and B, so this family is written here. -->
+        <Variants Modify="Extend">
+            <Part Ref="PrismaFairingA_Prefab_FairingHalf" />
+            <Part Ref="PrismaFairingA_Prefab_FairingHalfB" />
+        </Variants>
         <!--
-             The decoupler names its connector by KeyRef, and that connector keeps the DecouplerJoint capability, as
-             on the stock fairings.
+             The half is a decoupler on its own connector, which keeps the DecouplerJoint capability, as on
+             the stock fairings. Each side of the split gets the impulse divided by its mass along the
+             connector (Vehicle.Split), so the half moves straight out at about 7.8 m/s at scale 1.
         -->
         <Connectors Modify="Extend">
             <Connector Key="_connector1Base" Modify="Patch">
@@ -70,16 +90,49 @@
             </Connector>
         </Connectors>
         <Components Modify="Extend">
-            <Decoupler Force="800">
+            <Decoupler Force="930">
                 <Connector KeyRef="_connector1Base" />
             </Decoupler>
         </Components>
+        <!-- The shell and the acoustic blanket as one thin shell of 120 kg. -->
         <InertMasses Modify="Extend">
             <CustomMass>
-                <LocationAsmb X="2.4" Y="0" Z="-0.55" />
+                <LocationAsmb X="2.71" Z="-0.58" />
                 <Mass Kg="120" />
-                <MassSpecificInertia Ixx="0.6" Iyy="3.0" Izz="3.0" />
+                <MassSpecificInertia Ixx="0.53" Iyy="2.69" Izz="3.03" />
             </CustomMass>
         </InertMasses>
+    </Part>
+
+    <!--
+         The black carbon variant of the 2 m medium half. A variant member carries only its subparts; the
+         game data comes from the head through Parent. The import tool cannot write this row, because the Id of
+         the head has no A suffix.
+    -->
+    <Part Id="PrismaFairingA_Prefab_FairingHalfB" Modify="RemoveIfExists" />
+    <Part Id="PrismaFairingA_Prefab_FairingHalfB" Parent="PrismaFairingA_Prefab_FairingHalf">
+        <SubParts>
+            <SubPart Key="PurrlineFairing2B_Subpart_HalfBottom1" Ref="PurrlineFairing2B_Subpart_HalfBottom" />
+            <SubPart Key="PurrlineFairing2B_Subpart_HalfNose1" Ref="PurrlineFairing2B_Subpart_HalfNose">
+                <Transform>
+                    <Position X="3.1" />
+                </Transform>
+            </SubPart>
+            <SubPart Key="PurrlineFairing2B_Subpart_HalfRow1" Ref="PurrlineFairing2B_Subpart_HalfRow">
+                <Transform>
+                    <Position X="1.55" />
+                </Transform>
+            </SubPart>
+            <SubPart Key="PurrlineFairing2A_Subpart_LatchFitting1" Ref="PurrlineFairing2A_Subpart_LatchFitting">
+                <Transform>
+                    <Rotation X="0.27" />
+                </Transform>
+            </SubPart>
+            <SubPart Key="PurrlineFairing2A_Subpart_LatchFitting2" Ref="PurrlineFairing2A_Subpart_LatchFitting">
+                <Transform>
+                    <Rotation X="-0.27" />
+                </Transform>
+            </SubPart>
+        </SubParts>
     </Part>
 </Assets>

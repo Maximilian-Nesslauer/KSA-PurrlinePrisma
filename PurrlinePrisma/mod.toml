@@ -1,18 +1,20 @@
 name = "Prisma by Purrline Rocketworks"
-version = "1.0.0"
-description = "Parts of the Prisma small satellite launcher by the fictional Purrline Rocketworks, inspired by Spectrum from Isar Aerospace. Not affiliated with Isar Aerospace."
+version = "1.1.0"
+description = "Parts of the Prisma small satellite launcher by the fictional Purrline Rocketworks, inspired by Spectrum from Isar Aerospace. Not affiliated with Isar Aerospace. The 2 m payload fairing is the same as in Fairings by Purrline Rocketworks, and the two mods can be enabled together."
 assets = [
     "PrismaTankBAssets.xml",
     "PrismaTankAAssets.xml",
     "AltairEngineAAssets.xml",
     "PrismaUpperAAssets.xml",
-    "PrismaFairingAAssets.xml",
     "PrismaPayloadAAssets.xml",
     "PrismaGroundAAssets.xml",
+    "PurrlineFairing2BAssets.xml",
+    "PurrlineFairing2AAssets.xml",
+    "PrismaFairingAAssets.xml",
     "PrismaTankAGameData.xml",
     "AltairEngineAGameData.xml",
     "PrismaUpperAGameData.xml",
-    "PrismaFairingAGameData.xml",
     "PrismaPayloadAGameData.xml",
     "PrismaGroundAGameData.xml",
+    "PrismaFairingAGameData.xml",
 ]

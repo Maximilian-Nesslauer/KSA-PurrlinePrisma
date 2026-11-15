@@ -14,8 +14,8 @@ Validated against KSA build version 2026.11.10.5801.
 
 | Picture | Part | What it is |
 | --- | --- | --- |
-| ![Prisma Fairing Half](images/parts/PrismaFairingA_Prefab_FairingHalf.jpg) | **Prisma Fairing Half** | Fairing half; place two |
-| ![Prisma Fairing Base](images/parts/PrismaFairingA_Prefab_FairingBase.jpg) | **Prisma Fairing Base** | Fairing base ring with the 1 m payload adapter |
+| ![Fairing Half 2 m Medium](images/parts/PrismaFairingA_Prefab_FairingHalf.jpg) ![Fairing Half 2 m Medium (B)](images/parts/PrismaFairingA_Prefab_FairingHalfB.jpg) | **Fairing Half 2 m Medium** | Fairing half, 6.10 m long; place two; white or black carbon |
+| ![Fairing Base 2 m](images/parts/PrismaFairingA_Prefab_FairingBase.jpg) | **Fairing Base 2 m** | Fairing base ring with the 1 m payload adapter |
 | ![Prisma Payload Mass Simulator (1 t)](images/parts/PrismaPayloadA_Prefab_MassSimulator.jpg) | **Prisma Payload Mass Simulator (1 t)** | 1000 kg dummy payload for test flights |
 | ![Prisma Stage 2](images/parts/PrismaUpperA_Prefab_Stage2.jpg) | **Prisma Stage 2** | Upper stage: tank, Altair Vac and four RCS blocks |
 | ![Prisma Interstage](images/parts/PrismaTankA_Prefab_Interstage.jpg) | **Prisma Interstage** | Interstage with its own decoupler; the Altair Vac sits inside |
@@ -25,6 +25,8 @@ Validated against KSA build version 2026.11.10.5801.
 | ![Altair Vac](images/parts/AltairEngineA_Prefab_AltairVac.jpg) | **Altair Vac** | Single vacuum engine with the long nozzle |
 | ![Prisma Hold-down Ring](images/parts/PrismaGroundA_Prefab_HoldDownRing.jpg) | **Prisma Hold-down Ring** | Holds the rocket on the pad and releases at lift-off |
 | ![Prisma Strongback](images/parts/PrismaGroundA_Prefab_Strongback.jpg) | **Prisma Strongback** | Tower beside the rocket; stays on the pad |
+
+The fairing is the 2 m fairing of [Fairings by Purrline Rocketworks](https://github.com/Maximilian-Nesslauer/KSA-PurrlineFairings), which also has 3 m fairings and hammerhead bases. Prisma contains the 2 m fairing, so you do not need Fairings for it. Press V on a placed half to change between white and black carbon.
 
 All parts on one sheet: [images/parts/all-parts.jpg](images/parts/all-parts.jpg)
 
@@ -39,9 +41,11 @@ Requires [Extended Propellants](https://github.com/Maximilian-Nesslauer/KSA-Exte
 - Borea: install Prisma from the content list. Borea adds Extended Propellants.
 - By hand: copy `PurrlinePrisma` and `ExtendedPropellants` from the release zips into `Documents/My Games/Kitten Space Agency/mods/` and enable both.
 
+You can install [Fairings by Purrline Rocketworks](https://github.com/Maximilian-Nesslauer/KSA-PurrlineFairings) together with Prisma. Both mods contain the same 2 m fairing, and the game loads it one time, in any mod order. If you have Prisma 1.0.0, update it to 1.1.0 before you enable Fairings: with Prisma 1.0.0 and Fairings enabled together, the fairing does not load.
+
 To remove the mod, delete its folder. Vehicles with its parts do not load without it.
 
-Works well with [Andoya Spaceport](https://github.com/Maximilian-Nesslauer/KSA-AndoyaSpaceport) (a pad for Prisma) and [Facet](https://github.com/Maximilian-Nesslauer/KSA-PurrlineFacet) (satellites for the fairing).
+Works well with [Andoya Spaceport](https://github.com/Maximilian-Nesslauer/KSA-AndoyaSpaceport) (a pad for Prisma), [Facet](https://github.com/Maximilian-Nesslauer/KSA-PurrlineFacet) (satellites for the fairing) and [Fairings](https://github.com/Maximilian-Nesslauer/KSA-PurrlineFairings) (more fairings).
 
 ## Licence
 
