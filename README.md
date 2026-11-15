@@ -53,4 +53,4 @@ Code and game data: MIT ([LICENSE](LICENSE)). Meshes, textures, logo and picture
 
 ## Links
 
-[Forum thread](https://forums.ahwoo.com/threads/prisma-by-purrline-rocketworks.ID/) | [Issues](https://github.com/Maximilian-Nesslauer/KSA-PurrlinePrisma/issues)
+[Forum thread](https://forums.ahwoo.com/forums/kitten-space-agency/mod-releases/prisma-by-purrline-rocketworks.1633/) | [Issues](https://github.com/Maximilian-Nesslauer/KSA-PurrlinePrisma/issues)
