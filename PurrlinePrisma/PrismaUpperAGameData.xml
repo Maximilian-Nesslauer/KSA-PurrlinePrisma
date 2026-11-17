@@ -3,8 +3,10 @@
      Prisma by Purrline Rocketworks: game data of the upper stage. Each row patches the row of the same Id in
      PrismaUpperAAssets.xml, so this file loads after it. As in the stock tanks, OuterRadius is twice the true radius
      (the true value is in the comment beside it), and the mesh keeps the true size. The outer and inner connector
-     pairs let the 1 m Altair Vac sit inside the interstage. Control and Battery stand for the avionics, and four RCS
-     blocks give attitude control in a coast and roll control in a burn.
+     pairs let the 1 m Altair Vac sit inside the interstage. The stage is a probe core like the stock probe cores
+     (CoreCommandC_Prefab_ProbeCoreSmallA): Control, Battery, a switched 15 W avionics consumer with a status light,
+     Avionics and a radiation shield for the avionics box, all in the Components of the Part. Four RCS blocks give
+     attitude control in a coast and roll control in a burn.
 -->
 <Assets>
     <!--
@@ -232,10 +234,21 @@
                     <WallThickness Mm="4" />
                 </CylindricalTank>
             </Tank>
+            <!--
+                 The probe core. The game finds the switched consumer and the Avionics of a Control only in the same
+                 Part or SubPart (Vehicle.FindProbeConsumer, Vehicle.FindAvionics), so all of them stay here. The 400
+                 kJ battery runs the 15 W avionics for about 7 h. The avionics have the radiation tolerance of the
+                 small stock probe core, because the stage stays in low orbit.
+            -->
             <Control />
             <Battery>
                 <MaximumCapacity J="400000" />
             </Battery>
+            <PowerConsumer PowerSwitch="true" HasStatusLight="true">
+                <Consumed W="15" />
+            </PowerConsumer>
+            <Avionics ToleranceGy="100" UpsetDoseMSv="90" />
+            <RadiationShield Key="AvionicsBox" HullGPerCm2="1" />
         </Components>
 
         <!-- Forward skirt, then avionics and thrust frame. -->

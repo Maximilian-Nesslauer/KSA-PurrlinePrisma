@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+- Give Stage 2 switchable 15 W avionics and a status light on its 400 kJ battery. Set radiation tolerance to 100 Gy, upset dose to 90 mSv and shielding to 1 g/cm2.
+- Set Altair and the engine bay gimbals to 10 degrees per second and Altair Vac to 4 degrees per second.
+- Add a faint stock plume trail for Altair and the engines in the Altair Engine Bay. It appears in atmosphere when **Plume trails** is enabled.
+- Block new surface attachments on the jettisonable fairing halves and keep the shared 2 m fairing files identical to Fairings 1.0.1. Preserve existing part IDs and connector order.
+
 ## 1.1.2
 
 Works with KSA build version 2026.11.16.5901 and needs it. KSA 2026.11.16.5901 moved the minimum throttle and the minimum pulse time of an engine from the combustion chamber to the rocket, so with Prisma 1.1.1 the Altair, the Altair Vac, the engine bay and the upper stage did not load. These values are now in the new place and are the same as before. The game also corrected the density of MMH, so each of the four RCS tanks of the upper stage now holds about 37 kg instead of 27 kg. Part Ids, shapes, colliders, masses and saved vehicles are the same as in 1.1.1. This version does not load on older KSA builds; use 1.1.1 there.

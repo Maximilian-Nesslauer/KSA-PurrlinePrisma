@@ -7,8 +7,9 @@
      is 149 bar instead of the real 47 bar, because the tanks follow the stock convention of about four times the true
      volume; this gives the full vehicle a lift-off thrust-to-weight ratio of about 1.4. The nozzle exit diameter and
      area ratio come from the mesh. The origin of each engine subpart is its gimbal pivot, so the rows add only the
-     gimbal limits. A ConsumerFeedWiring feeds only the core of its own placed subpart, so the engine bay has one
-     wiring per engine.
+     gimbal limits and slew rates. Each gimbal slews at two times its largest angle per second (10 deg/s for 5 deg,
+     4 deg/s for 2 deg), as the stock gimbals of the same angles do. A ConsumerFeedWiring feeds only the core of its
+     own placed subpart, so the engine bay has one wiring per engine.
 -->
 <Assets>
     <!--
@@ -816,6 +817,7 @@
                 <ReactionPlumes>
                     <ReactionPlume Default="true">
                         <VolumetricExhaust Ref="PurrlineAltairPlume" />
+                        <PlumeTrail Ref="LiquidEnginePlumeTrail" />
                     </ReactionPlume>
                 </ReactionPlumes>
                 <SoundEvent Ref="DefaultEngineSoundBehavior" Action="On" />
@@ -861,6 +863,7 @@
                 <ReactionPlumes>
                     <ReactionPlume Default="true">
                         <VolumetricExhaust Ref="PurrlineAltairPlume" />
+                        <PlumeTrail Ref="LiquidEnginePlumeTrail" />
                     </ReactionPlume>
                 </ReactionPlumes>
                 <SoundEvent Ref="DefaultEngineSoundBehavior" Action="On" />
@@ -1006,46 +1009,55 @@
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine2" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine3" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine4" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine5" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine6" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine7" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine8" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
             <Gimbal Key="AltairEngineA_Subpart_AltairBayEngine9" Modify="Patch">
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
         </Gimbals>
         <!--
@@ -1115,6 +1127,7 @@
                 <MaxAngleY Degrees="5" />
                 <MaxAngleZ Degrees="5" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="10" />
             </Gimbal>
         </Gimbals>
         <InertMasses Modify="Extend">
@@ -1177,6 +1190,7 @@
                 <MaxAngleY Degrees="2" />
                 <MaxAngleZ Degrees="2" />
                 <ConstrainToCircle Value="false" />
+                <MaxSlewRate DegreesPerSecond="4" />
             </Gimbal>
         </Gimbals>
         <InertMasses Modify="Extend">
