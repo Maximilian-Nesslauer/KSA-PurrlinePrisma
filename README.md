@@ -2,7 +2,7 @@
 
 A two-stage small satellite launcher for [Kitten Space Agency](https://ahwoo.com/app/100000/kitten-space-agency), from the fictional rocket maker Purrline Rocketworks. Inspired by Spectrum from Isar Aerospace.
 
-Validated against KSA build version 2026.11.10.5801.
+Validated against KSA build version 2026.11.16.5901.
 
 [![Watch the Prisma launch video](https://img.youtube.com/vi/jkoOCArH9X4/maxresdefault.jpg)](https://youtu.be/jkoOCArH9X4)
 

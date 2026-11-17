@@ -61,24 +61,28 @@
                 <Nozzles>
                     <Nozzle KeyRef="RcsAlongPlusNozzle" />
                 </Nozzles>
+                <MinimumPulseTime Seconds="0.0054489795" />
             </Rocket>
             <Rocket Key="RcsAlongMinusRocket">
                 <Core KeyRef="RcsAlongMinusChamber" />
                 <Nozzles>
                     <Nozzle KeyRef="RcsAlongMinusNozzle" />
                 </Nozzles>
+                <MinimumPulseTime Seconds="0.0054489795" />
             </Rocket>
             <Rocket Key="RcsAcrossPlusRocket">
                 <Core KeyRef="RcsAcrossPlusChamber" />
                 <Nozzles>
                     <Nozzle KeyRef="RcsAcrossPlusNozzle" />
                 </Nozzles>
+                <MinimumPulseTime Seconds="0.0054489795" />
             </Rocket>
             <Rocket Key="RcsAcrossMinusRocket">
                 <Core KeyRef="RcsAcrossMinusChamber" />
                 <Nozzles>
                     <Nozzle KeyRef="RcsAcrossMinusNozzle" />
                 </Nozzles>
+                <MinimumPulseTime Seconds="0.0054489795" />
             </Rocket>
         </Rockets>
         <RocketCores Modify="Extend">
@@ -94,7 +98,6 @@
                 </Reaction>
                 <MaxPressure Bar="7" />
                 <ThermalEfficiency Value="0.95" />
-                <MinimumPulseTime Seconds="0.0054489795" />
             </Combustor>
             <Combustor Key="RcsAlongMinusChamber">
                 <FeedsFroms>
@@ -108,7 +111,6 @@
                 </Reaction>
                 <MaxPressure Bar="7" />
                 <ThermalEfficiency Value="0.95" />
-                <MinimumPulseTime Seconds="0.0054489795" />
             </Combustor>
             <Combustor Key="RcsAcrossPlusChamber">
                 <FeedsFroms>
@@ -122,7 +124,6 @@
                 </Reaction>
                 <MaxPressure Bar="7" />
                 <ThermalEfficiency Value="0.95" />
-                <MinimumPulseTime Seconds="0.0054489795" />
             </Combustor>
             <Combustor Key="RcsAcrossMinusChamber">
                 <FeedsFroms>
@@ -136,7 +137,6 @@
                 </Reaction>
                 <MaxPressure Bar="7" />
                 <ThermalEfficiency Value="0.95" />
-                <MinimumPulseTime Seconds="0.0054489795" />
             </Combustor>
         </RocketCores>
         <RocketNozzles Modify="Extend">

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+Works with KSA build version 2026.11.16.5901 and needs it. KSA 2026.11.16.5901 moved the minimum throttle and the minimum pulse time of an engine from the combustion chamber to the rocket, so with Prisma 1.1.1 the Altair, the Altair Vac, the engine bay and the upper stage did not load. These values are now in the new place and are the same as before. The game also corrected the density of MMH, so each of the four RCS tanks of the upper stage now holds about 37 kg instead of 27 kg. Part Ids, shapes, colliders, masses and saved vehicles are the same as in 1.1.1. This version does not load on older KSA builds; use 1.1.1 there.
+
 ## 1.1.1
 
 Fixes flickering faces on the raceway, validated against KSA build version 2026.11.10.5801. The end faces of the raceway covers on the Prisma Stage 1 Tank and on the Prisma Interstage had no texture area, so the game could not shade them, and they showed changing noise. These faces now have their own small texture area with the plain light grey paint of the cover. Only the mesh and the textures of these faces changed: part Ids, shapes, colliders, masses, the 2 m fairing and saved vehicles are the same as in 1.1.0.
