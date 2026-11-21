@@ -22,7 +22,7 @@ Validated against KSA build version **2026.11.16.5901**.
 | ![Prisma Stage 2](images/parts/PrismaUpperA_Prefab_Stage2.jpg) | **Prisma Stage 2** | Upper-stage tank with four RCS blocks and switchable avionics. Fits the Altair Vac. |
 | ![Prisma Interstage](images/parts/PrismaTankA_Prefab_Interstage.jpg) | **Prisma Interstage** | Interstage with its own decoupler; the Altair Vac sits inside |
 | ![Prisma Stage 1 Tank](images/parts/PrismaTankA_Prefab_Stage1Tank.jpg) | **Prisma Stage 1 Tank** | The 2 m first stage tank |
-| ![Altair Engine Bay](images/parts/AltairEngineA_Prefab_EngineBay.jpg) | **Altair Engine Bay** | Nine Altair engines, each with its own gimbal |
+| ![Altair Engine Bay](images/parts/AltairEngineA_Prefab_EngineBay.jpg) | **Altair Engine Bay** | Nine Altair engines, each with its own gimbal and its own engine controller |
 | ![Altair](images/parts/AltairEngineA_Prefab_Altair.jpg) | **Altair** | Single sea level engine |
 | ![Altair Vac](images/parts/AltairEngineA_Prefab_AltairVac.jpg) | **Altair Vac** | Single vacuum engine with the long nozzle |
 | ![Prisma Hold-down Ring](images/parts/PrismaGroundA_Prefab_HoldDownRing.jpg) | **Prisma Hold-down Ring** | Holds the rocket on the pad and releases at lift-off |

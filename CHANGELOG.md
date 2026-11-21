@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.0
+
+Each of the nine Altair engines in the Altair Engine Bay now has its own engine controller, validated against KSA build version 2026.11.16.5901. All nine still light together in the first stage, and the Active switch in the part window of the engine bay still switches all nine together. A tool that controls engines, such as a flight computer, can now switch each engine on and off on its own, for example to land a returning first stage on the center engine or on three engines only. Part Ids, shapes, colliders, masses, fuel feeds, gimbals and the 2 m fairing are the same as in 1.2.0. Craft files and vehicles that have not launched yet are not affected. A Prisma that is in flight in a save from 1.2.0 or older loses the state of its engine bay when you load the save: the nine engines load switched off. Switch them on again with the Active switch in the part window of the engine bay.
+
 ## 1.2.0
 
 - Give Stage 2 switchable 15 W avionics and a status light on its 400 kJ battery. Set radiation tolerance to 100 Gy, upset dose to 90 mSv and shielding to 1 g/cm2.

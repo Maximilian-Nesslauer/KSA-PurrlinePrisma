@@ -920,16 +920,48 @@
             <Diameter M="2"/>
         </Diameters>
         <RocketEngineControllers Modify="Extend">
-            <RocketEngineController Key="Altair">
+            <RocketEngineController Key="AltairCenter">
                 <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine1" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing1">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine2" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing2">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine3" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing3">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine4" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing4">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine5" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing5">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine6" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing6">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine7" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing7">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine8" KeyRef="Engine" />
+                </Rockets>
+            </RocketEngineController>
+            <RocketEngineController Key="AltairRing8">
+                <Rockets>
                     <Rocket SubPart="AltairEngineA_Subpart_AltairBayEngine9" KeyRef="Engine" />
                 </Rockets>
             </RocketEngineController>
