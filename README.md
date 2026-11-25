@@ -4,7 +4,7 @@ A two-stage small satellite launcher for [Kitten Space Agency](https://ahwoo.com
 
 ## Compatibility
 
-Validated against KSA build version **2026.11.16.5901**.
+Validated against KSA build version **2026.11.25.5949**.
 
 [![Watch the Prisma launch video](https://img.youtube.com/vi/jkoOCArH9X4/maxresdefault.jpg)](https://youtu.be/jkoOCArH9X4)
 
